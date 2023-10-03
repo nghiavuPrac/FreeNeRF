@@ -21,21 +21,27 @@ Novel view synthesis with sparse inputs is a challenging problem for neural radi
 
 We recommend to use [Anaconda](https://www.anaconda.com/products/individual) to set up the environment. First, create a new `freenerf` environment: 
 
-```conda create -n freenerf python=3.6.15```
+```conda create -n freenerf python=3.6```
 
 Next, activate the environment:
 
-```conda activate freenerf```
+```
+conda activate freenerf
+conda install -c conda-forge cudatoolkit=11.2.2 cudnn=8.1.0
+```
+
+Finally, install jaxlib with the correct CUDA version. For example, if you have CUDA 11.0 installed, you can run
+```
+pip install --upgrade pip setuptools
+pip install --upgrade jaxlib==0.1.68+cuda110 -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+```
+
 
 You can then install the dependencies:
 
 ```pip install -r requirements.txt```
 
-Finally, install jaxlib with the correct CUDA version. For example, if you have CUDA 11.0 installed, you can run
-```
-pip install --upgrade pip
-pip install --upgrade jaxlib==0.1.68+cuda110 -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
-```
+
 
 ## Data
 Please follow RegNeRF's [data preparation instructions](https://github.com/google-research/google-research/tree/master/regnerf) to prepare the DTU and LLFF datasets.
